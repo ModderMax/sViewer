@@ -1,7 +1,8 @@
 The server files should be placed in the same directory as your live_output folder.
 
+Install nodejs
 Run install-dependencies.bat to make sure all dependencies are present
-Open the terminal and use `node server.js` to start the server 
+Open the terminal in the server's directory and use `node server.js` to start the server 
 Run HWiNFO server on port 8085
 Run satdump server on port 8081
 
