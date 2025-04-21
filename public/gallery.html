@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery OwO</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>
+    <a>Gallery</a>
+    <a href="/satdump">Satdump</a>
+    <a href="/stats">Stats</a>
+    <a href="../">^</a>
+  </h1>
+  <div class="filters">
+    <select id="satelliteFilter"></select>
+    <div class="dropdown" id="compositeDropdown">
+      <button onclick="toggleDropdown(event, 'compositeDropdown')">Composites</button>
+      <div class="dropdown-content checkbox-group" id="compositeFilter">
+        <!-- Checkboxes will be dynamically inserted here -->
+      </div>
+    </div>
+    <select id="sortFilter">
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+      <option value="asc">Name Asc</option>
+      <option value="desc">Name Desc</option>
+    </select>
+    <div class="dropdown" id="miscDropdown">
+      <button onclick="toggleDropdown(event)">Misc Filters</button>
+      <div class="dropdown-content checkbox-group">
+        <label><input type="checkbox" id="mapOnly"> Maps Only</label>
+        <label><input type="checkbox" id="daytimeOnly"> Daytime Only</label>
+        <label><input type="checkbox" id="correctedOnly" checked> Corrected Only</label>
+        <label><input type="checkbox" id="showUnfilled"> Show Unfilled</label>
+        <label><input type="checkbox" id="sortByPass" checked> Group by Pass</label>
+      </div>
+    </div>
+    <input id="searchInput" placeholder="Search...">
+    <button onclick="loadImages()">Apply</button>
+    <button id="repopulate-btn" style="margin-left: 10px;">Repopulate DB</button>
+    <button id="addNoteBtn" onclick="openNotePopup()">+ Add Note</button>
+  </div>
+  <div class="gallery" id="gallery"></div>
+
+  <script src="/js/gallery.js" defer></script>
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Large view">
+  </div>
+  <div id="notePopup" class="popup-overlay" style="display: none;">
+    <div class="popup-box">
+      <h3>Add New Note</h3>
+      <label for="noteTime">Date & Time:</label>
+      <input type="datetime-local" id="noteTime" required>
+  
+      <label for="noteTitle">Title:</label>
+      <input type="text" id="noteTitle" maxlength="100" required>
+  
+      <label for="noteDescription">Description:</label>
+      <textarea id="noteDescription" rows="5" maxlength="1000" required></textarea>
+  
+      <div class="popup-buttons">
+        <button onclick="submitNote()">Save Note</button>
+        <button onclick="closeNotePopup()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
